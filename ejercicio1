@@ -1,0 +1,71 @@
+def registro_semana_ciencia():
+    total_proyectos = 0
+    proyectos_por_area = {
+        "1": 0,  # Tecnología
+        "2": 0,  # Medio Ambiente
+        "3": 0,  # Salud
+        "4": 0   # Agroindustria
+    }
+
+    programas = []
+    conteo_programas = []
+
+    while True:
+        nombre = input("Ingrese nombre del estudiante: ")
+        codigo = input("Ingrese código del estudiante: ")
+        programa = input("Ingrese programa académico: ")
+
+        print("Seleccione área del proyecto:")
+        print("1. Tecnología")
+        print("2. Medio Ambiente")
+        print("3. Salud")
+        print("4. Agroindustria")
+        area = input("Ingrese opción (1-4): ")
+
+        total_proyectos += 1
+
+        # Conteo por área
+        if area in proyectos_por_area:
+            proyectos_por_area[area] += 1
+        else:
+            print("Área no válida. Proyecto no contabilizado por área.")
+
+        # Manejo de programas únicos
+        if programa in programas:
+            index = programas.index(programa)
+            conteo_programas[index] += 1
+        else:
+            programas.append(programa)
+            conteo_programas.append(1)
+
+        op = input("¿Desea registrar otro proyecto? (1. Terminar / 2. Seguir): ")
+        if op == "1":
+            break
+
+    # Resultados
+    print("\nTotal de proyectos registrados:", total_proyectos)
+    print("Proyectos por área:")
+    print("  Tecnología:", proyectos_por_area["1"])
+    print("  Medio Ambiente:", proyectos_por_area["2"])
+    print("  Salud:", proyectos_por_area["3"])
+    print("  Agroindustria:", proyectos_por_area["4"])
+
+    # Área con más participación
+    nombre_areas = {
+        "1": "Tecnología",
+        "2": "Medio Ambiente",
+        "3": "Salud",
+        "4": "Agroindustria"
+    }
+    area_max = max(proyectos_por_area, key=proyectos_por_area.get)
+    print("Área con más participación:", nombre_areas[area_max])
+
+    # Programa con más proyectos
+    if programas:
+        index_max = conteo_programas.index(max(conteo_programas))
+        print("Programa con más proyectos registrados:", programas[index_max])
+    else:
+        print("No se registraron programas.")
+
+# Ejecutar la función
+registro_semana_ciencia()
