@@ -3,7 +3,7 @@ def registro_semana_ciencia():
     proyectos_por_area = {
         "1": 0,  # Tecnología
         "2": 0,  # Medio Ambiente
-        "3": 0,  # Saludo
+        "3": 0,  # Saludoo
         "4": 0   # Agroindustria
     }
 
